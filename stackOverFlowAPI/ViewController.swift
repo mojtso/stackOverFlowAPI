@@ -8,11 +8,25 @@
 
 import UIKit
 
+
+struct GetAllQas: RequestType {
+    typealias ResponseType = Items
+    var data: RequestData {
+        return RequestData(path: "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&tagged=swift%203&site=stackoverflow&filter=withbody")
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        GetAllQas().execute(
+            onSuccess: { (items: Items) in
+            print(items)
+        }, onError: { (error: Error) in
+            print(error)
+        })
     }
 
     override func didReceiveMemoryWarning() {
