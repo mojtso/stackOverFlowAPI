@@ -12,4 +12,14 @@ import Foundation
 public struct Item: Codable
 {
     let owner: Owner?
+    let tags: [String]?
+    let is_answered: Bool?
+    let view_count: Int?
+    let score: Int?
+    let last_activity_date: Int?
+    let creation_date: Int?
+    let question_id: Int?
+    let link: String?
+    let title: String?
+//    let body: String?
 }

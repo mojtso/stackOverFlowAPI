@@ -29,6 +29,7 @@
 		5D85A3D621235AA30004469B /* RequestTypeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D521235AA30004469B /* RequestTypeUtil.swift */; };
 		5D85A3D821235CF20004469B /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D721235CF20004469B /* NetworkDispatcher.swift */; };
 		5D85A3DA21235E2C0004469B /* URLSessionNetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D921235E2C0004469B /* URLSessionNetworkDispatcher.swift */; };
+		5DCE206D212B20CF00B1280D /* tagDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE206C212B20CF00B1280D /* tagDto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		5D85A3D521235AA30004469B /* RequestTypeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTypeUtil.swift; sourceTree = "<group>"; };
 		5D85A3D721235CF20004469B /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		5D85A3D921235E2C0004469B /* URLSessionNetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkDispatcher.swift; sourceTree = "<group>"; };
+		5DCE206C212B20CF00B1280D /* tagDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tagDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 				5D85A3CF212356980004469B /* ItemsDto.swift */,
 				5D85A3D1212357220004469B /* ItemDto.swift */,
 				5D85A3D3212357630004469B /* OwnerDto.swift */,
+				5DCE206C212B20CF00B1280D /* tagDto.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				5D85A3CD2123547F0004469B /* RequestUtil.swift in Sources */,
 				5D85A3D821235CF20004469B /* NetworkDispatcher.swift in Sources */,
 				5D85A3D4212357630004469B /* OwnerDto.swift in Sources */,
+				5DCE206D212B20CF00B1280D /* tagDto.swift in Sources */,
 				5D85A3D621235AA30004469B /* RequestTypeUtil.swift in Sources */,
 				5D0300DD212A1AEC00743AD2 /* SearchTableViewCell.swift in Sources */,
 				5D0300D12129B28C00743AD2 /* ViewControllerDelegate.swift in Sources */,
@@ -562,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YC8SF5H99;
 				INFOPLIST_FILE = stackOverFlowAPI/Info.plist;
@@ -571,6 +576,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyz.stackOverFlowAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -580,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YC8SF5H99;
 				INFOPLIST_FILE = stackOverFlowAPI/Info.plist;
@@ -589,6 +597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyz.stackOverFlowAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -8,12 +8,22 @@
 
 import UIKit
 
+struct GetAllQas: RequestType {
+    
+    typealias ResponseType = Items
+    var path: String?
+    var data: RequestData {
+        return RequestData(path: path!)
+    }
+}
 
 class SearchViewController: UIViewController {
     
     var customSearchController: CustomSearchController!
     var viewControllerDelegate: ViewControllerDelegate?
     var didGetSearchedResults: SearchQADelegate?
+    var itemsDto: [Item] = []
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,7 +50,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return itemsDto.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,6 +59,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCellId", for: indexPath) as! SearchTableViewCell
+        
+        cell.qaDescription.text = itemsDto[indexPath.row].title!
         
         return cell
     }
@@ -68,6 +80,20 @@ extension SearchViewController: CustomSearchControllerDelegate {
     }
     
     func didChangeSearchText(searchText: String) {
-        
+        getAllQas(tag: searchText)
+    }
+}
+
+extension SearchViewController {
+    func getAllQas(tag: String) {
+        var request = GetAllQas()
+        request.path = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&tagged=swift%203&site=stackoverflow&filter=withbody"
+        request.execute(
+            onSuccess: { (items) in
+                self.itemsDto = items.items!
+                self.tableView.reloadData()
+        }, onError: { (error: Error) in
+            print(error)
+        })
     }
 }
