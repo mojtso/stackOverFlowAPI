@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum HTTPMethod: String
+{
+    case get = "GET"
+    case post = "POST"
+}
 
 public struct RequestData
 {
@@ -16,10 +21,10 @@ public struct RequestData
     public let params: [String:Any?]?
     public let headers: [String:String]?
     
-    public init(path: String, method: String = "GET", params: [String:Any?]? = nil, headers: [String:String]? = nil)
+    public init(path: String, method: HTTPMethod = .get, params: [String:Any?]? = nil, headers: [String:String]? = nil)
     {
         self.path = path
-        self.method = method
+        self.method = method.rawValue
         self.params = params
         self.headers = headers
     }
