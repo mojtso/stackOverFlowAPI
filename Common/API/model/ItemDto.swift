@@ -15,6 +15,7 @@ public struct Item: Codable
     let tags: [String]?
     let is_answered: Bool?
     let view_count: Int?
+    let answer_count: Int?
     let score: Int?
     let last_activity_date: Int?
     let creation_date: Int?

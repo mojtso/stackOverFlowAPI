@@ -62,6 +62,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.qaDescription.text = itemsDto[indexPath.row].title!
         
+        if let askedBy: String = itemsDto[indexPath.row].owner?.display_name  {
+            cell.askedBy.text = "asked by \(askedBy)"
+        }
+        if let votes: Int = itemsDto[indexPath.row].owner?.accept_rate {
+            cell.votes.text = "\(votes) votes"
+        }
+        if let answers: Int = itemsDto[indexPath.row].answer_count {
+            cell.answers.text = "\(answers) answers"
+        }
+        if let views: Int = itemsDto[indexPath.row].view_count {
+            cell.views.text = "\(views) views"
+        }
+        
         return cell
     }
 }
@@ -93,6 +106,7 @@ extension SearchViewController {
                 self.itemsDto = items.items!
                 self.tableView.reloadData()
         }, onError: { (error: Error) in
+            //do something??
             print(error)
         })
     }

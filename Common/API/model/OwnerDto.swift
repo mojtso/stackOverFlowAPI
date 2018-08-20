@@ -13,6 +13,7 @@ public struct Owner: Codable
     var reputation: Int?
     let user_id: Int?
     let user_type: String?
+    let accept_rate: Int?
     let profile_image: String?
     let display_name: String?
     let link: String?
