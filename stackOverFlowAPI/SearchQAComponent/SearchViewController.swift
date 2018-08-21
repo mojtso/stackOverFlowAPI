@@ -105,8 +105,15 @@ extension SearchViewController {
         if let encodedTag = tag.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
             request.path = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&tagged=\(encodedTag)&site=stackoverflow&filter=withbody"
             request.execute(
-                onSuccess: { (items) in
-                    self.itemsDto = items.items!
+                onSuccess: { (items: Items) in
+                    if items.items?.count == 0 {
+                        self.itemsDto = []
+                    } else {
+                        if let itemsArray: [Item] = items.items {
+                            self.itemsDto = itemsArray
+                        }
+
+                    }
                     self.tableView.reloadData()
             }, onError: { (error: Error) in
                 //do something??
