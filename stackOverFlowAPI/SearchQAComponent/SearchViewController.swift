@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
     
     var customSearchController: CustomSearchController!
     var viewControllerDelegate: ViewControllerDelegate?
-    var didGetSearchedResults: SearchQADelegate?
+    var itemSearchedResultDelegate: SearchQADelegate?
     var itemsDto: [Item] = []
     
     
@@ -54,7 +54,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.itemSearchedResultDelegate?.didGetSearchedQa(item: self.itemsDto[indexPath.row])
+        self.viewControllerDelegate?.removeViewControllerAsChild(viewController: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,6 +100,7 @@ extension SearchViewController: CustomSearchControllerDelegate {
 
 extension SearchViewController {
     func getAllQas(tag: String) {
+        self.itemsDto = []
         var request = GetAllQas()
         request.path = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&tagged=swift%203&site=stackoverflow&filter=withbody"
         request.execute(

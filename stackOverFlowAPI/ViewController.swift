@@ -17,10 +17,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.btnSearch.delegate = self
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//Add SeachViewController
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        btnSearch.resignFirstResponder()
+        let searchVc: SearchViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "search") as! SearchViewController
+        searchVc.viewControllerDelegate = self
+        searchVc.itemSearchedResultDelegate = self as? SearchQADelegate
+        self.addViewControllerAsChildViewController(viewController: searchVc)
     }
 }
 
@@ -50,26 +56,11 @@ extension ViewController: ViewControllerDelegate {
     }
 }
 
-extension ViewController {
-//     func getAllQas() {
-//        GetAllQas().execute(
-//            onSuccess: { (items: Items) in
-//                print(items)
-//        }, onError: { (error: Error) in
-//            print(error)
-//        })
-//    }
-}
-
-extension ViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        btnSearch.resignFirstResponder()
-        print("trying to add a view controller")
-        let searchVc: SearchViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "search") as! SearchViewController
-        searchVc.viewControllerDelegate = self 
-        self.addViewControllerAsChildViewController(viewController: searchVc)
+//Add prepare DetailVc with item
+extension ViewController: SearchQADelegate {
+    func didGetSearchedQa(item: Item) {
+        let detailsVc: DetailsViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! DetailsViewController
+        detailsVc.item = item
+        self.navigationController?.pushViewController(detailsVc, animated: true)
     }
 }
-
-
-

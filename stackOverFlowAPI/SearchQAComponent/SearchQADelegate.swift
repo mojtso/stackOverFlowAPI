@@ -10,5 +10,5 @@ import Foundation
 
 
 protocol SearchQADelegate {
-    func didGetSearchedQa()
+    func didGetSearchedQa(item: Item)
 }
