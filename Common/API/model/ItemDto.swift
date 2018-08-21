@@ -22,5 +22,5 @@ public struct Item: Codable
     let question_id: Int?
     let link: String?
     let title: String?
-//    let body: String?
+    let body: String?
 }

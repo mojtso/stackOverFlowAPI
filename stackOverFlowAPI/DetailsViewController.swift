@@ -19,12 +19,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var views: UILabel!
     @IBOutlet weak var detailInfo: UILabel!
     @IBOutlet weak var avatar: UIImageView!
-    
+    @IBOutlet weak var qaBody: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -50,10 +51,25 @@ class DetailsViewController: UIViewController {
             self.name.text = name
         }
         
-        if let viewsCount = item?.view_count {
-            self.views.text = "\(viewsCount)"
+        if let reputation = item?.owner?.reputation {
+            self.views.text = "\(reputation)"
         }
         
+        if let dateTime = item?.creation_date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+            dateFormatter.locale = Locale(identifier: "en_US")
+            
+            let date = Date(timeIntervalSince1970: TimeInterval(dateTime))
+            self.detailInfo.text = "asked \(dateFormatter.string(from: date))"
+        }
+        
+        if let body = item?.body {
+            let bodyString = body.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+            self.qaBody.text = bodyString
+        }
         
         if let imageUrl = item?.owner?.profile_image {
             let url: URL = URL(string: imageUrl)!
