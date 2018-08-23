@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnSearch.delegate = self
-        let data: NSDictionary = ["name": "Test", "last": "Me"]
     }
 }
 

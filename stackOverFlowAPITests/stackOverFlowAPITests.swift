@@ -50,7 +50,6 @@ class stackOverFlowAPITests: XCTestCase {
         }, onError: {(error: Error) in
             self.itemDto = nil
         })
-        
     }
 }
 
