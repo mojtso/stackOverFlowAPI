@@ -9,8 +9,13 @@
 import XCTest
 @testable import stackOverFlowAPI
 
+
 class stackOverFlowAPITests: XCTestCase {
     
+    
+    
+    
+    var itemDto: Items?
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,16 +26,32 @@ class stackOverFlowAPITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testItems() {
+        self.getAllQasWithTag(tag: "Swift")
+        XCTAssertNotNil(self.itemDto != nil, "itemDto.items IS 0")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testItemNil() {
+        self.getAllQasWithTag(tag: "")
+        XCTAssertNil(self.itemDto, "itemDto NOT nil")
     }
     
+    
+    func getAllQasWithTag(tag: String) {
+        var request = GetAllQas()
+        let encodedTag = tag.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        request.path = "https://api.stackexchange.com/2.2/questions?pagesize=20&order=desc&sort=activity&tagged=\(encodedTag!)&site=stackoverflow&filter=withbody"
+        
+        request.execute(onSuccess: {(item: Items) in
+            self.itemDto = item
+            if(item.items?.count == nil) {
+                self.itemDto = nil
+            }
+        }, onError: {(error: Error) in
+            self.itemDto = nil
+        })
+        
+    }
 }
+
+

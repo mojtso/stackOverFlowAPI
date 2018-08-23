@@ -29,6 +29,7 @@
 		5D85A3D621235AA30004469B /* RequestTypeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D521235AA30004469B /* RequestTypeUtil.swift */; };
 		5D85A3D821235CF20004469B /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D721235CF20004469B /* NetworkDispatcher.swift */; };
 		5D85A3DA21235E2C0004469B /* URLSessionNetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D85A3D921235E2C0004469B /* URLSessionNetworkDispatcher.swift */; };
+		5D9EC22B212EA5FB00736416 /* BasicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EC22A212EA5FB00736416 /* BasicTests.m */; };
 		5DCE206D212B20CF00B1280D /* tagDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE206C212B20CF00B1280D /* tagDto.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		5D85A3D521235AA30004469B /* RequestTypeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTypeUtil.swift; sourceTree = "<group>"; };
 		5D85A3D721235CF20004469B /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		5D85A3D921235E2C0004469B /* URLSessionNetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkDispatcher.swift; sourceTree = "<group>"; };
+		5D9EC229212EA5FA00736416 /* stackOverFlowAPITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "stackOverFlowAPITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5D9EC22A212EA5FB00736416 /* BasicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTests.m; sourceTree = "<group>"; };
 		5DCE206C212B20CF00B1280D /* tagDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tagDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,8 +194,10 @@
 		5D85A3A121218DDB0004469B /* stackOverFlowAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				5D9EC22A212EA5FB00736416 /* BasicTests.m */,
 				5D85A3A221218DDB0004469B /* stackOverFlowAPITests.swift */,
 				5D85A3A421218DDB0004469B /* Info.plist */,
+				5D9EC229212EA5FA00736416 /* stackOverFlowAPITests-Bridging-Header.h */,
 			);
 			path = stackOverFlowAPITests;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 					};
 					5D85A39D21218DDB0004469B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 						TestTargetID = 5D85A38921218DD90004469B;
 					};
 					5D85A3A821218DDB0004469B = {
@@ -401,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9EC22B212EA5FB00736416 /* BasicTests.m in Sources */,
 				5D85A3A321218DDB0004469B /* stackOverFlowAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +615,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YC8SF5H99;
 				INFOPLIST_FILE = stackOverFlowAPITests/Info.plist;
@@ -618,6 +626,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyz.stackOverFlowAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "stackOverFlowAPITests/stackOverFlowAPITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stackOverFlowAPI.app/stackOverFlowAPI";
@@ -629,6 +639,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6YC8SF5H99;
 				INFOPLIST_FILE = stackOverFlowAPITests/Info.plist;
@@ -639,6 +650,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xyz.stackOverFlowAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "stackOverFlowAPITests/stackOverFlowAPITests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stackOverFlowAPI.app/stackOverFlowAPI";
